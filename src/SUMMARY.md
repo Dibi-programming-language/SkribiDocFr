@@ -5,12 +5,12 @@
 
 # Syntaxe
 
-- [Opérations et types de base](Base/Opérations%20et%20types%20de%20base.md)
-- Stockage
+- [Opérations et types de base](Base/Opérations_et_types_de_base.md)
+- [Stockage](Stockage/Stockage.md)
 	- [Variables](Stockage/Variables.md)
 	- [Fonctions](Stockage/Fonctions.md)
 	- [Méthodes](Stockage/Méthodes.md)
-- Gestion de flux
+- [Gestion de flux](Flux/Flux.md)
 	- [Conditions](Flux/Conditions.md)
 
 # Fonctions basiques
