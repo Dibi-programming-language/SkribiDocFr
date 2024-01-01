@@ -4,3 +4,6 @@ language = "fr"
 multilingual = false
 src = "src"
 title = "Documentation du Skribi (Fr)"
+
+[output.html.code.hidelines]
+skribi = "#"
