@@ -35,10 +35,10 @@ Ou en utilisant une variable :
 
 ```skribi
 ioi cond ioial
-# // Plus de code ici si vous le voulez
+#// Plus de code ici si vous le voulez
 ij cond {
 	// Code toujours exécuté
-	# // Sauf si vous modifiez la variable avant !
+	#// Sauf si vous modifiez la variable avant !
 }
 ```
 
@@ -71,12 +71,12 @@ Mais attention ! Si le bloc de code du `ij` est vide, il est plus optimal et pro
 Vous pourriez avoir la syntaxe suivante :
 
 ```skribi
-# ij c1 {
-	# // Exécuté si la condition est vraie
+ij c1 {
+	// Exécuté si la condition est vraie
 } sula {
-	// c1 est faux
+	// c1 est fausse
 	ij c2 {
-		// Exécuté si c2 vraie et c1 faux
+		// Exécuté si c2 vraie et c1 fausse
 	} sula {
 		// Exécuté si tout est faux
 	}
@@ -89,9 +89,9 @@ Cette syntaxe peut être simplifiée en :
 ij c1 {
 	// Exécuté si la C1 vraie
 } sula ij c2 {
-	// Exécuté si c2 vraie et c1 faux
+	// Exécuté si c2 vraie et c1 fausse
 } sula {
-	// Exécuté si c1 et c2 sont faux
+	// Exécuté si c1 et c2 sont fausses
 }
 ```
 

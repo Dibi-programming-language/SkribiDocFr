@@ -5,5 +5,16 @@ multilingual = false
 src = "src"
 title = "Documentation du Skribi (Fr)"
 
+[output.html]
+git-repository-url = "https://github.com/Dibi-programming-language/SkribiDocFr"
+git-repository-icon = "fa-github"
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+limit-results = 15
+
 [output.html.code.hidelines]
 skribi = "#"
