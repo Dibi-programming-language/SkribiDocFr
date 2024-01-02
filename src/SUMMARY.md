@@ -12,18 +12,26 @@
 	- [Variables](Stockage/Variables.md)
 	- [Fonctions](Stockage/Fonctions.md)
 	- [Méthodes](Stockage/Méthodes.md)
-- [Gestion de flux](Flux/Flux.md)
+- [Gestion du flux de code](Flux/Flux.md)
 	- [Embranchements de base](Flux/Embranchements%20de%20base.md)
 
 # Fonctions basiques
+
+- [Fonctions de base](Fonctions%20de%20base/Fonctions%20de%20base.md)
+- [Librairie principale](Fonctions%20de%20base/Librairie%20principale/Librairie%20principale.md)
+	- [Entrées et sorties](Fonctions%20de%20base/Librairie%20principale/Entrées%20et%20sorties.md)
 
 # Debug
 
 - [Codes d'erreur](Codes_erreur/Codes_erreur.md)
 
+# Conventions
+
+- [Conventions](Conventions/Conventions.md)
+
 # A destination des contributeurs
 
-- [Appel d'une fonction de l'interpréteur](Niveau_interpreteur/Appel_fonction_interpreteur.md)
+- [Appel d'une fonction de l'interpréteur](Niveau_interpreteur/Appel%20fonction%20interpreteur.md)
 
 ---
 
