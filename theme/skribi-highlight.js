@@ -13,6 +13,13 @@ hljs.registerLanguage(
                     /\/\//,
                     /\n/
                 ),
+                // Strings
+                {
+                    scope: 'string',
+                    begin: '"',
+                    end: '"',
+                    //contains: [hljs.BACKSLASH_ESCAPE]
+                },
             ]
         }
     }

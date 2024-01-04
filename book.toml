@@ -7,6 +7,7 @@ title = "Documentation du Skribi (Fr)"
 
 [output.html]
 additional-js = ["theme/skribi-highlight.js"]
+additional-css = ["theme/skr-css.css"]
 git-repository-url = "https://github.com/Dibi-programming-language/SkribiDocFr"
 git-repository-icon = "fa-github"
 

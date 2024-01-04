@@ -3,6 +3,8 @@
 
 En Skribi, les opérations de base se placent comme dans la plupart des langages entre les deux opérandes. Exemple : `1 + 1`. Rien de bien compliqué…
 
+<div class="warning"> Les notations données en exemples doivent être utilisées dans une instruction valide, une valeur seule n'est pas une instruction valide et génère donc une erreur.</div>
+
 ## Entiers
 
 Ou `Integer` en anglais.
@@ -11,9 +13,9 @@ Le type pour les nombres entiers en Skribi a pour nom **`int`**. Ce nom est orig
 
 | Nom | Exemple | Addition | Soustraction | Multiplication |
 | ---- | ---- | ---- | ---- | ---- |
-| `dar` | `1.5` | `+` | `-` | `*` |
+| `dar` | `1` | `+` | `-` | `*` |
 
-La division et la puissances ont des cas particuliers non débattus pour le moment, ils seront donc ajoutés plus tard.
+La division et la puissance ont des cas particuliers non débattus pour le moment, ils seront donc ajoutés plus tard.
 
 ## Flottants
 
@@ -33,6 +35,30 @@ L'origine de ce nom est simple : `io` signifie `oui` en Dibi et `no` signifie `n
 
 Pour ce qui est des deux valeurs, `true` / `false` (ou `vrai` / `faux`), elles se notent `ioial` et `noial`. `ial` est le suffixe pour les adjectifs.
 
-## Chaîne de caractères
+Notation :
+
+```skribi
+ioial // = vrai
+```
+
+```skribi
+noial // = faux
+```
+
+
+
+## Chaînes de caractères
 
 Ou `String` en anglais. Se nomme `skr` en Skribi, nom originaire du mot `Skribi` en Dibi. Et oui ! Skribi en Dibi est un mot lié à l'écriture. C'est une coïncidence à la base que le nom du langage existe en Dibi. 
+
+Pour écrire un `string`, vous pouvez utiliser la notation classique avec des guillemets :
+
+```skribi
+"Je suis un string"
+```
+
+Si vous voulez mettre des guillemets dans votre chaîne, vous pouvez utiliser un `\"`
+
+```skribi
+"\"" // un string valide
+```
