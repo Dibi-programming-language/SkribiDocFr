@@ -19,7 +19,7 @@ Ainsi, la particule `ij` permet d'exécuter un bloc de code si une expression bo
 
 ```skribi
 ij condition {
-	// Votre code
+    // Votre code
 }
 ```
 
@@ -27,7 +27,7 @@ Exemple :
 
 ```skribi
 ij ioial {
-	// Code toujours exécuté
+    // Code toujours exécuté
 }
 ```
 
@@ -37,8 +37,8 @@ Ou en utilisant une variable :
 ioi cond ioial
 #// Plus de code ici si vous le voulez
 ij cond {
-	// Code toujours exécuté
-	#// Sauf si vous modifiez la variable avant !
+    // Code toujours exécuté
+    #// Sauf si vous modifiez la variable avant !
 }
 ```
 
@@ -58,9 +58,9 @@ Utilisation :
 
 ```skribi
 ij condition {
-	// Exécuté si la condition est vraie
+    // Exécuté si la condition est vraie
 } sula {
-	// Exécuté dans le cas contraire
+    // Exécuté dans le cas contraire
 }
 ```
 
@@ -72,14 +72,14 @@ Vous pourriez avoir la syntaxe suivante :
 
 ```skribi
 ij c1 {
-	// Exécuté si la condition est vraie
+    // Exécuté si la condition est vraie
 } sula {
-	// c1 est fausse
-	ij c2 {
-		// Exécuté si c2 vraie et c1 fausse
-	} sula {
-		// Exécuté si tout est faux
-	}
+    // c1 est fausse
+    ij c2 {
+        // Exécuté si c2 vraie et c1 fausse
+    } sula {
+        // Exécuté si tout est faux
+    }
 }
 ```
 
@@ -87,11 +87,11 @@ Cette syntaxe peut être simplifiée en :
 
 ```skribi
 ij c1 {
-	// Exécuté si la C1 vraie
+    // Exécuté si la C1 vraie
 } sula ij c2 {
-	// Exécuté si c2 vraie et c1 fausse
+    // Exécuté si c2 vraie et c1 fausse
 } sula {
-	// Exécuté si c1 et c2 sont fausses
+    // Exécuté si c1 et c2 sont fausses
 }
 ```
 
@@ -101,16 +101,16 @@ Par exemple :
 
 ```skribi
 ij c1 {
-	// ...
+    // ...
 } sula ij c2 {
-	// ...
+    // ...
 } sula ij c3 {
-	// ...
+    // ...
 } sula ij c4 {
-	// ...
+    // ...
 } sula ij c5 {
-	// ...
+    // ...
 } sula {
-	// ...
+    // ...
 }
 ```

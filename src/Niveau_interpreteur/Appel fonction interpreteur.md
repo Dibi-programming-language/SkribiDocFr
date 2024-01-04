@@ -25,9 +25,25 @@ Le mot clé `skr_app` est utilisé, suivi d'un identifiant `fonction` qui peut �
 
 Les arguments sont séparés par un espace, et peuvent être très nombreux. Ici, il n'est pas possible de sauter une ligne au milieu de cette syntaxe, car le nombre d'arguments n'est pas connu à l'avance.
 
-# Fonctions existantes
+## Fonctions existantes
 
 | Nom | Arguments | Conséquence |
 | ---- | ---- | ---- |
 | `print` | Non limités. Tout type de base.  | Envoie dans la console les valeurs des éléments converties en String. Non séparés par des espaces. Aucun retour à la ligne automatique. |
 | `println` | Non limités. Tout type de base. | Même conséquence que pour le `print` mais avec un retour à la ligne. |
+
+### Exemples
+
+```skribi
+#skr myskr "abc"
+#skr myskr2 "def"
+skr_app print myskr myskr2
+#// Résultat = abcdef
+```
+
+```skribi
+#skr myskr "abc"
+#skr myskr2 "def"
+skr_app println myskr myskr2
+#// Résultat = abcdef\n
+```
