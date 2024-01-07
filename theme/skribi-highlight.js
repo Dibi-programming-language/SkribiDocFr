@@ -4,7 +4,7 @@ hljs.registerLanguage(
         return {
             keywords: {
                 keyword: 'skr_app ij ji ums ei ju fu pu kat sula',
-                literal: 'ioial noial',
+                literal: 'io no',
                 contributor_only: 'print println',
                 built_in: 'adatali ioi dar int skr'
             },

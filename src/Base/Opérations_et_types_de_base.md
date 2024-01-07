@@ -31,21 +31,27 @@ La division et la puissance ont des cas particuliers non débattus pour le momen
 
 Ou `Boolean` en anglais. Se note `ioi` en Skribi.
 
-L'origine de ce nom est simple : `io` signifie `oui` en Dibi et `no` signifie `non`. En Dibi, les mots de même nature sont presque toujours avec le même suffixe. Ainsi, le `i` est le suffixe d'un nom commun. `ioi` est donc le nom commun associé à `oui`.
+Comme dans tous les langages, les booléens peuvent prendre deux valeurs différentes et êtres utilisés dans des expressions logiques.
 
-Pour ce qui est des deux valeurs, `true` / `false` (ou `vrai` / `faux`), elles se notent `ioial` et `noial`. `ial` est le suffixe pour les adjectifs.
+Contrairement aux langages basés sur l'anglais, le Skribi utilise `io` à la place de `true` pour désigner une expression logique vraie et `no` à la place de `false` pour une expression logique fausse.
 
 Notation :
 
 ```skribi
-ioial // = vrai
+io // = vrai
 ```
 
 ```skribi
-noial // = faux
+no // = faux
 ```
 
+### Origine de la notation
 
+L'origine de ce nom est simple : `io` signifie `oui` en Dibi et `no` signifie `non`. En Dibi, les mots de même nature sont presque toujours avec le même suffixe. Ainsi, le `i` est le suffixe d'un nom commun. `ioi` est donc le nom commun associé à `oui`.
+
+Pour les adjectifs, le suffixe utilisé est `ial`. Pour une traduction la plus littérale possible, `ioial` et `noial` pourraient ainsi être utilisés dans certaines situations.
+
+Cependant, en Dibi `io` et `no` ne désignent pas uniquement `oui` et `non` mais aussi les deux valeurs booléennes en mathématiques. Ainsi, elles ont aussi été choisies pour l'informatique.
 
 ## Chaînes de caractères
 

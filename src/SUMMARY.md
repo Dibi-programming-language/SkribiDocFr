@@ -12,7 +12,7 @@
 	- [Variables](Stockage/Variables.md)
 	- [Fonctions](Stockage/Fonctions.md)
 	- [Méthodes](Stockage/Méthodes.md)
-- [Gestion du flux de code](Flux/Flux.md)
+- [Gestion du flux de code](Flux/Flux%20de%20code.md)
 	- [Embranchements de base](Flux/Embranchements%20de%20base.md)
 
 # Fonctions basiques

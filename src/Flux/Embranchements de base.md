@@ -26,15 +26,17 @@ ij condition {
 Exemple :
 
 ```skribi
-ij ioial {
+ij io {
     // Code toujours exécuté
 }
 ```
 
+Pensez à regarder la page [sur les opérations et les types](../Base/Opérations_et_types_de_base.md) afin de vous familiariser avec les expressions booléennes.
+
 Ou en utilisant une variable :
 
 ```skribi
-ioi cond ioial
+ioi cond io
 #// Plus de code ici si vous le voulez
 ij cond {
     // Code toujours exécuté
