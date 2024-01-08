@@ -13,7 +13,7 @@ Le type pour les nombres entiers en Skribi a pour nom **`int`**. Ce nom est orig
 
 | Nom | Exemple | Addition | Soustraction | Multiplication |
 | ---- | ---- | ---- | ---- | ---- |
-| `dar` | `1` | `+` | `-` | `*` |
+| `int` | `1` | `+` | `-` | `*` |
 
 La division et la puissance ont des cas particuliers non débattus pour le moment, ils seront donc ajoutés plus tard.
 
