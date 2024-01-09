@@ -25,6 +25,14 @@ skr hello "Hello World"
 ioi false no
 ```
 
+### Modificateurs du fonctionnement de la déclaration
+
+#### Constantes
+
+#### Variables privées
+
+#### Variables globales
+
 ## Modification de variables
 
 Modifier une variable permet de lui donner une nouvelle valeur.
@@ -36,6 +44,12 @@ nom valeur
 ```
 
 L'ancienne valeur est alors remplacée par la nouvelle.
+
+```skribi
+int integi 2
+integi 5
+// La valeur est modifiée de 5 à 2
+```
 
 ## Appel de variables
 
