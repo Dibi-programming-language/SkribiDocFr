@@ -60,7 +60,7 @@ Déclare deux constantes `daritmi` et `integi`.
 
 #### Variables globales
 
-Les variables globales sont très souvent considérées comme une mauvaise pratique. Faites attention si vous les utiliser.
+Les variables globales sont très souvent considérées comme une mauvaise pratique. Faites attention si vous les utilisez.
 
 Le mot clé à utiliser pour déclarer une variable globale est  `fu`.
 
