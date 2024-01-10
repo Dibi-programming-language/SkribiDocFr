@@ -29,9 +29,44 @@ ioi false no
 
 #### Constantes
 
+Une constante est une variable dont la valeur ne peut pas varier. L'intérêt est d'éviter de modifier par erreur une valeur dont la constance permet de faire fonctionner certains algorithmes.
+
+Ainsi, modifier une constante génère une erreur. Déclarer une variable constante permet aussi parfois d'optimiser certaines choses du côté de l'interpréteur (pas pour le moment).
+
+```skribi
+ju <déclaration>
+```
+
+`<déclaration>`est à remplacer par n'importe quelle déclaration de variable. Par exemple
+
+```skribi
+ju type nom valeur
+```
+
+Ceci reste un exemple, des déclarations plus complexes existent.
+
+Concrètement :
+
+```skribi
+ju dar daritmi 1.5
+ju int integi 2
+```
+
+Déclare deux constantes `daritmi` et `integi`.
+
 #### Variables privées
 
+`pu`
+
 #### Variables globales
+
+Les variables globales sont très souvent considérées comme une mauvaise pratique. Faites attention si vous les utiliser.
+
+Le mot clé à utiliser pour déclarer une variable globale est  `fu`.
+
+```skribi
+fu <déclaration>
+```
 
 ## Modification de variables
 
