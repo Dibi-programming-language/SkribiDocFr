@@ -33,6 +33,7 @@
 # A destination des contributeurs
 
 - [Appel d'une fonction de l'interpréteur](Niveau_interpreteur/Appel%20fonction%20interpreteur.md)
+- [Propositions en débat](Propositions%20en%20débat/Propositions%20en%20débat.md)
 
 ---
 
