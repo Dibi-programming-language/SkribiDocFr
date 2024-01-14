@@ -58,6 +58,6 @@ Il est aussi possible de mettre des boucles dans des boucles, mais dans ce cas, 
 
 Parfois un code plus long à écrire et à comprendre est mieux qu'un code court, mais lent à exécuter…
 
-## Répéter un certain nombre de fois
-
 `ci` `mio` et `popuite`
+
+## Répéter un certain nombre de fois
