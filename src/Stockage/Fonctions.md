@@ -81,7 +81,7 @@ Ou, en plus complexe et moins optimisé, pour ceux qui ont déjà lu le chapitre
 ```skribi
 // Prise en charge uniquement des nombres positifs
 ums mult(int a, int b) {
-    if a == 0 {
+    ij a == 0 {
         ei 0
     }
     int tot a
