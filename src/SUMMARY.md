@@ -34,6 +34,7 @@
 
 - [Appel d'une fonction de l'interpréteur](Niveau_interpreteur/Appel%20fonction%20interpreteur.md)
 - [Propositions en débat](Propositions%20en%20débat/Propositions%20en%20débat.md)
+	- [Débat sur les ensembles](Propositions%20en%20débat/Débat%20sur%20les%20ensembles.md)
 
 ---
 
