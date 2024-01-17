@@ -101,6 +101,44 @@ Le `@` pourra dans la proposition finale être remplacé par une autre syntaxe.
 
 Dans ce cas où le type n'est pas compatible avec les éléments, une erreur est renvoyée.
 
+### Opérations sur les ensembles
+
+Les opérations disponibles sur les ensembles seront les opérations classiques :
+- Appartenance
+- Sous-ensemble → devra être optimisé dans cette optique
+- Égalité
+- Union
+- Intersection
+- Cardinal ?
+
+Je pense qu'il est important de noter que parcourir un ensemble n'est normalement pas possible, mais qu'on est en informatique. Je pense qu'il est donc important de pouvoir parcourir un ensemble dans un sens arbitraire.
+
+#### Prédicat et opérations
+
+Tout ensemble peut être transformé en un ensemble qu'il n'est plus possible de parcourir, car les valeurs exactes sont perdues. L'implémentation reste à définir afin d'être la plus optimisée possible. De préférence, l'opération `appartenance` doit être au maximum en `O(log(n))`.
+
+Je pense que connaitre le cardinal de l'ensemble peut être pratique.
+
+Il est important de noter les opérations qui existent (`e` = élément, `p` = prédicat, `s` = ensemble et `m` = prédicat ou ensemble, pas d'importance) :
+- `appartenance: e x p -> ioi`
+- `sous ensemble: s x p -> ioi`. Attention à l'ordre.
+- `egalité: m x m -> ioi`. Si cardinal connu.
+- `intersection: m x m -> m`. Dans le cas où c'est deux prédicats, il est possible de faire l'intersection via une petite triche où le nouvel objet ne fait en réalité qu'appeler les méthodes des deux autres. Il renvoie alors un prédicat. Dans les autres cas, il renvoie un ensemble en utilisant un parcours des valeurs et l'appartenance.
+- `union: m x m -> p`. De même ici.
+- `predicat: s -> p`. Transforme en prédicat l'ensemble.
+
+Les noms seront modifiés plus tard.
+
+Exemple :
+
+```skribi
+predicat:ensemble
+appartenance(5):predicat:{5} @ int // io
+appartenance(6):predicat:{5} @ int // no
+```
+
+#### Variants et instances
+
 ### Ensemble de conditions
 
 Comme en maths, il est possible de créer un ensemble à partir de conditions, mais cet ensemble est appelé ensemble théorique en Skribi.
@@ -170,7 +208,7 @@ Après tout :
 
 Revient à créer l'ensemble manuellement.
 
-### Rendre concret un ensemble théorique
+#### Rendre concret un ensemble théorique
 
 Les ensembles de conditions sont des ensembles dits théoriques, car ils restent non générés. Pour générer les valeurs de l'ensemble, il suffit d'utiliser `kere`.
 
@@ -181,7 +219,17 @@ kere:{int a, a == 5 OU a == 6} @ Condition
 
 L'ensemble généré est alors l'unique instance possible de cette sorte de classe.
 
-### Opérations sur les ensembles
+#### Transformer en prédicat un ensemble théorique
+
+Une deuxième méthode doit être créée, puisque `predicat` est utilisée pour les ensembles normaux, et retourne ici un prédicat de conditions.
+
+Je nomme pour le moment cette méthode `pipeline` car c'est une sorte de tunnel qui vérifie une par une les conditions.
+
+### Les fonctions
+
+Par graphe et classiques.
+
+### Les dictionnaires
 
 Rédigé dans l'après-midi ou demain.
 
