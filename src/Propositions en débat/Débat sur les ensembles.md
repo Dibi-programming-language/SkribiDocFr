@@ -137,7 +137,64 @@ appartenance(5):predicat:{5} @ int // io
 appartenance(6):predicat:{5} @ int // no
 ```
 
-#### Variants et instances
+#### Variants
+
+##### Définition
+
+Cette partie est vraiment en expérimentation. Toute suggestion est bienvenue.
+
+Tout élément dans un ensemble peut être accompagné d'une variable nommée `variant`.
+
+Pour un élément, la syntaxe d'un variant de type donné est :
+
+```skribi
+element with type valeur
+```
+
+Pour accéder à la valeur d'un variant, ou la modifier, il suffit d'utiliser la syntaxe suivante :
+
+```skribi
+// On admet un ensemble e
+// ...
+e(element) // Donne la valeur du variant associé
+e(element) = valeur // modifier la valeur
+```
+
+Il est possible d'indiquer des constantes avec les préfixes habituels.
+
+L'avantage des variants est qu'ils sont **ignorés** par les opérations classiques des ensembles pour les comparaisons. Lors d'une union / intersection, les valeurs sont **perdues** en cas de conflit.
+
+Notons cependant qu'un élément accompagné d'un variant de type A est différent du même élément accompagné d'un variant de type B (ou vide) afin de garantir les opérations.
+
+##### Classes d'ensembles
+
+Les classes d'ensembles permettent de regrouper en catégories les ensembles.
+
+Il suffit d'utiliser les mots clés `kat kropis` devant la définition. Cet ensemble est alors quasiment une classe.
+
+Ce qui change est qu'il est alors possible de ne pas donner de valeur à un variant, et qu'il est possible de créer des instances.
+
+##### Instances
+
+Créer une instance permet de définir les différentes valeurs des variants. Syntaxe :
+
+```skribi
+e(a, b, c, d, ...) // instanciation
+```
+
+Un nouvel ensemble est alors créé, avec les valeurs données. L'ordre des arguments est identique à celui utilisé lors de la déclaration.
+
+Pour savoir si un élément est une instance d'une classe d'ensembles, il suffit d'utiliser le symbole de sous-ensemble de cette manière : `e "sous ensemble de" e(a, b, c, ...)`. Cet ordre permettra aussi de couvrir l'héritage.
+
+Un élément devait être ajouté ici, mais a été oublié.
+
+#### Modifier un ensemble
+
+Dans cette proposition, la modification des ensemble n'est pas du tout définie. Tout simplement, car aucune idée n'a été trouvée.
+
+Utiliser le mot clé classique pour indiquer qu'un ensemble ne peut pas être modifié ? Utiliser un système de particule ?
+
+Bref, il est parfois considéré que l'ensemble n'est pas modifiable, et d'autres fois qu'il l'est.
 
 ### Ensemble de conditions
 
@@ -225,9 +282,15 @@ Une deuxième méthode doit être créée, puisque `predicat` est utilisée pour
 
 Je nomme pour le moment cette méthode `pipeline` car c'est une sorte de tunnel qui vérifie une par une les conditions.
 
+### Ensemble de variables
+
+Coming soon ...
+
 ### Les fonctions
 
 Par graphe et classiques.
+
+#### Ensemble de fonctions
 
 ### Les dictionnaires
 
