@@ -196,6 +196,10 @@ Utiliser le mot clé classique pour indiquer qu'un ensemble ne peut pas être mo
 
 Bref, il est parfois considéré que l'ensemble n'est pas modifiable, et d'autres fois qu'il l'est.
 
+#### Élément privé
+
+Un élément d'un ensemble quelconque peut être rendu privé via le mot clé classique. Il sera alors ignoré par l'opération pour parcourir l'ensemble, et son potentiel variant ne sera pas accessible.
+
 ### Ensemble de conditions
 
 Comme en maths, il est possible de créer un ensemble à partir de conditions, mais cet ensemble est appelé ensemble théorique en Skribi.
@@ -289,6 +293,10 @@ Coming soon ...
 ### Les fonctions
 
 Par graphe et classiques.
+
+#### Fonctions par graphe
+
+#### Fonctions par définition d'un code
 
 #### Ensemble de fonctions
 
