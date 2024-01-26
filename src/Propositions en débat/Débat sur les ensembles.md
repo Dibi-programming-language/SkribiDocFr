@@ -286,29 +286,16 @@ Une deuxième méthode doit être créée, puisque `predicat` est utilisée pour
 
 Je nomme pour le moment cette méthode `pipeline` car c'est une sorte de tunnel qui vérifie une par une les conditions.
 
-### Ensemble de variables
+### Ce qu'il reste à rédiger
 
-Coming soon ...
+Je n'ai pas eu le temps de rédiger tout… mais je pense qu'il y a déjà assez pour avoir du contenu de débat.
 
-### Les fonctions
+Quelques idées pour la suite :
+- ensemble de variables (`@ Variables`) : base pour la POO
+- Fonctions : définies par un ensemble avec des variants = par graphe ou par une méthode plus classique de suite d'instructions.
+- Ensemble de fonctions
+- Ensemble mix fonctions + variables pour la POO -> héritage = union
+- Dictionnaires ?
+- Fonctions et méthodes, instances, sous-ensemble pour le `is` …
 
-Par graphe et classiques.
-
-#### Fonctions par graphe
-
-#### Fonctions par définition d'un code
-
-#### Ensemble de fonctions
-
-### Les dictionnaires
-
-Rédigé dans l'après-midi ou demain.
-
-<div class="warning">Cette proposition rédigée n'est pas terminée</div>
-
-Listes des choses à rédiger :
-- Pour l'héritage, sous-ensemble
-- Fonctions et méthodes
-- Dictionnaires
-- Instances
-- …
+Bref, il me restait de quoi doubler le tout… mais les cours reprennent.
