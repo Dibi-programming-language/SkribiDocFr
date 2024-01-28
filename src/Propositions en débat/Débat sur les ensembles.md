@@ -70,11 +70,11 @@ Les multiensembles sont évoqués rapidement.
 
 Pour commencer cette proposition, nous allons parler des ensembles en Skribi.
 
-Un ensemble est un rassemblement de plusieurs éléments de même type, ou de types ayant un ancêtre commun. Le type sélectionné pour l'ensemble sera toujours le plus restrictif.
+Un ensemble est une collection de plusieurs éléments de même type, ou de types ayant un ancêtre commun. Le type sélectionné pour l'ensemble sera toujours le plus restrictif.
 
 Un ensemble est lui-même un type, il est donc possible de faire des ensembles d'ensembles.
 
-La syntaxe pour créer un ensemble est la suivante :
+La syntaxe pour créer un ensemble fini est la suivante :
 
 ```Skribi
 {<éléments>}
