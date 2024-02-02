@@ -318,4 +318,34 @@ La syntaxe pour créer un ensemble fini est la suivante :
 {<éléments>}
 ```
 
-Les éléments sont séparés par des virgules.
+Les éléments sont séparés par des virgules, et une virgule optionnelle peut être ajoutée après le dernier élément.
+
+On peut remarquer les types sélectionnés pour les ensembles suivants :
+
+```skribi
+// Type pour les éléments : skr
+// Type de l'ensemble : kro skr
+{"a", "b", "c", "de"}
+
+// Un débat sera ouvert pour savoir si on fait la différence entre caractères et strings
+// Type théorique de l'ensemble : kro car
+{'a', 'b', 'c'}
+
+// Type de l'ensemble : kro kro skr
+{{"a"}, {"b", "c"}}
+
+// Un débat sera ouvert pour savoir si des supertypes sont créés pour les types de base.
+// Et si l'héritage multiple est possible pour ces types, car en fonction du contexte, il est pratique de considérer char comme un string ou comme un int
+// Type théorique de l'ensemble : kro ari
+{5, 5.0}
+```
+
+Dans le cas où le type de l'ensemble souhaité n'est pas celui sélectionné, alors il est possible de préciser le type de cette façon :
+
+```skribi
+{<éléments>} @ <Type>
+```
+
+Le `@` pourra dans la proposition finale être remplacé par une autre syntaxe.
+
+Dans ce cas où le type n'est pas compatible avec les éléments, une erreur est renvoyée.
