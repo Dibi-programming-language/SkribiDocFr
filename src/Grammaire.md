@@ -55,4 +55,20 @@ Si j'ai oublié des règles, n'hésitez pas à l'indiquer.
 <string> ::= '"' {(* - ('"' | \n)) | `\\"`} '"'
 ```
 
+La différence entre `float` et `int` ne se fait pas dans la grammaire LL1, c'est bien ici le Lexer qui s'occupe de tout. Ainsi, l'ambiguïté n'est pas importante.
+
+## Opérations
+
+Le non-terminal `value` est considéré comme un acquis pour le moment. Il sera défini plus tard.
+
+```
+<take_prio> ::= "(" TODO ")" | <value>
+<tp> ::= <take_prio>
+<mult> ::= <tp> * <tp>
+<div> ::= <tp> / <tp>
+<md> ::= <mult> | <div>
+<tp1> ::= ...
+<plus> ::= <tp> + <tp>
+```
+
 EN COURS
