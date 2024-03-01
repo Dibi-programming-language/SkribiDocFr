@@ -64,11 +64,12 @@ Le non-terminal `value` est considéré comme un acquis pour le moment. Il sera 
 ```
 <take_prio> ::= "(" TODO ")" | <value>
 <tp> ::= <take_prio>
-<mult> ::= <tp> * <tp>
-<div> ::= <tp> / <tp>
+<mult> ::= "*" <tp>
+<div> ::= "/" <tp>
 <md> ::= <mult> | <div>
 <tp1> ::= ...
-<plus> ::= <tp> + <tp>
+<add> ::= "+" <tp>
+<sub> ::= "-" <tp>
 ```
 
 EN COURS
