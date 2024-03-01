@@ -40,6 +40,12 @@ Ainsi, je ne connais aucun moyen de rendre cette grammaire LL1.
 
 Mais commençons par les éléments simples non ?
 
+## Lexer
+
+Pour commencer cette page, le fonctionnement du lexer et les différents tokens seront rappelés.
+
+Les token seront dans cette partie des non terminaux, constitués uniquement de terminaux. Le Lexer utilise sont propre algorithme, il n'est pas nécessaire de respecter les règles d'une grammaire LL1.
+
 ## Valeurs builtin
 
 La plupart de ces valeurs sont directement gérées par le Lexer, mais un petit rappel est toujours bon.
