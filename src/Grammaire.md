@@ -3,7 +3,9 @@
 
 Ici, en plus des symboles classiques de grammaire, les `{}` seront utilisés pour la répétition, et `..` pour les intervalles les plus logiques. De plus, les `""` et les `''` indiquent des terminaux constitués d'autre chose que des lettres et des chiffres. Enfin, `* -` indique tous les terminaux sauf ceux qui suivent.
 
-Le terminal `\` sera toujours représenté par `\\` pour enlever les confusions.
+Le terminal `\` sera toujours représenté par `\\` pour enlever les confusions. De même pour tout terminal pouvant être confondu avec un symbole de grammaire.
+
+Quand ils ne sont pas indiqués, les espaces, tabulations et retours à la ligne sont ignorés. Dans le cas contraire, le terminal d'espace est indiqué par `" "` et peut être remplacé sans contrainte par une tabulation ou un retour à ligne.
 
 ## Motivations
 
@@ -44,7 +46,7 @@ Mais commençons par les éléments simples non ?
 
 Pour commencer cette page, le fonctionnement du lexer et les différents tokens seront rappelés.
 
-Les token seront dans cette partie des non terminaux, constitués uniquement de terminaux. Le Lexer utilise sont propre algorithme, il n'est pas nécessaire de respecter les règles d'une grammaire LL1.
+Les tokens seront dans cette partie des non terminaux, constitués uniquement de terminaux. Le Lexer utilise son propre algorithme, il n'est pas nécessaire de respecter les règles d'une grammaire LL1.
 
 ### Valeurs builtin
 
@@ -96,17 +98,47 @@ TODO - Faire la différence entre certains tokens d'identifiant ? + terminer ça
 
 ## Opérations
 
-Le non-terminal `value` est considéré comme un acquis pour le moment. Il sera défini plus tard.
+Le nom terminal `value` devra être complété avec le temps.
 
 ```
-<take_prio> ::= "(" TODO ")" | <value>
+<value> ::= T_BOOL | T_INT | T_STRING | T_FLOAT
+<opc> ::= <tp2>
+<take_prio> ::= "(" <opc> ")" | <value>
 <tp> ::= <take_prio>
-<mult> ::= "*" <tp>
-<div> ::= "/" <tp>
+<mult> ::= "*" <tp1>
+<div> ::= "/" <tp1>
 <md> ::= <mult> | <div>
-<tp1> ::= ...
-<add> ::= "+" <tp>
-<sub> ::= "-" <tp>
+<tp1> ::= <tp> | <tp> <md>
+<add> ::= "+" <tp2>
+<sub> ::= "-" <tp2>
+<as> ::= <add> | <sub>
+<tp2> ::= <tp1> | <tp1> <as>
 ```
 
-EN COURS
+## Classes
+
+À partir du moment où le token `T_IDENTIFIER` est lu, la classe est considérée définie. `<class_c>` est mis en attente et est lu après que tous les types du même niveau sont déclarés.
+
+```
+<class_dec> ::= kat T_IDENTIFIER \{ <class_c> \}
+```
+
+## Variables
+
+Le token `T_TYPE_DEF` représente tout type défini par un nom au moment du parsing.
+
+D'autres éléments peuvent être ajoutés à `<type>`, comme un équivalent à `auto` / `let` / … pour détecter le type automatiquement, ou des types sous forme d'ensembles.
+
+De même pour `<nom>`, il est possible de lancer le débat à propos des tuples (ou des déclarations avec ensembles ?).
+
+Pour le moment, value reste simple, mais c'est amené à changer.
+
+```
+<type> ::= T_TYPE_DEF
+<name> ::= T_IDENTIFIER
+<value> ::= <opc>
+<var_dec> ::= <type> " " <name> " " <value>
+<var_mod> ::= <name> " " <value>
+```
+
+## ...

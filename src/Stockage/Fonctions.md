@@ -76,7 +76,7 @@ ums mult(int a, int b) {
 }
 ```
 
-Ou, en plus complexe et moins optimisé, pour ceux qui ont déjà lu le chapitre [Flux de code](../Flux/Flux%20de%20code.md) :
+Ou, en plus complexe et moins beaucoup optimisé, pour ceux qui ont déjà lu le chapitre [Flux de code](../Flux/Flux%20de%20code.md) :
 
 ```skribi
 // Prise en charge uniquement des nombres positifs
@@ -87,6 +87,7 @@ ums mult(int a, int b) {
     int tot a
     ci b > 1 {
         tot tot + a
+        b b - 1
     }
     ei tot
 }
