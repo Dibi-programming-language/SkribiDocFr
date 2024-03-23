@@ -15,7 +15,7 @@ Le plus difficile sera de lever certaines ambiguïtés comme pour la déclaratio
 
 Pour le moment la syntaxe la plus basique est : 
 
-```
+```html
 <identifiant> ::= plusieurs types d'identifiants, mais c'est difficile à différencier sans connaitre le reste du code (classes, variables, fonctions, ...)
 <dec_var> ::= <identifiant> <identifiant> <identifiant>
 <modif_var> ::= <identifiant> <identifiant>
@@ -30,7 +30,7 @@ Mais clairement, il n'est pour le moment pas possible de différencier un `dev_v
 
 Ainsi, si j'ai
 
-```
+```html
 <identifiant> <identifiant> <identifiant> <identifiant> <identifiant> <identifiant>
 ```
 
@@ -54,7 +54,7 @@ La plupart de ces valeurs sont directement gérées par le Lexer, mais un petit 
 
 Si j'ai oublié des règles, n'hésitez pas à l'indiquer.
 
-```
+```html
 T_BOOL ::= io | no
 T_INT ::= 0..9 {0..9}
 T_FLOAT ::= T_INT "." T_INT
@@ -73,9 +73,9 @@ Ici `R_VALUE` indique un token qui est soit :
 - Un token de fin de parenthèses
 - Un token de fin d'ensemble.
 
-```
+```html
 T_ADD ::= ~R_VALUE +
-T_SUB ::= ~R_VALUE -
+T_SUB ::= ~R_VALUE "-"
 T_DIV ::= ~R_VALUE /
 T_MULT ::= ~R_VALUE "*"
 T_POW ::= ~R_VALUE TODO
@@ -92,6 +92,8 @@ T_IN ::= ":"
 
 T_IDENTIFIER ::= (a..z | A..Z | "_") {a..z | A..Z | "_" | 0..9}
 T_FUNCTION ::= T_IDENTIFIER ~T_LEFT_P
+
+T_ANY ::= *
 ```
 
 TODO - Faire la différence entre certains tokens d'identifiant ? + terminer ça
@@ -100,8 +102,8 @@ TODO - Faire la différence entre certains tokens d'identifiant ? + terminer ça
 
 Le nom terminal `value` devra être complété avec le temps.
 
-```
-<value> ::= T_BOOL | T_INT | T_STRING | T_FLOAT
+```html
+<value> ::= T_BOOL | T_INT | T_STRING | T_FLOAT | (T_PLUS | T_MINUS) (<value>) | T_IDENTIFIER (<tuple> |)
 <opc> ::= <tp2>
 <take_prio> ::= "(" <opc> ")" | <value>
 <tp> ::= <take_prio>
@@ -117,10 +119,10 @@ Le nom terminal `value` devra être complété avec le temps.
 
 ## Classes
 
-À partir du moment où le token `T_IDENTIFIER` est lu, la classe est considérée définie. `<class_c>` est mis en attente et est lu après que tous les types du même niveau sont déclarés.
+À partir du moment où le token `T_IDENTIFIER` est lu, la classe est considérée définie. `<class_c>` est mis en attente et est lu après que tous les types du même niveau sont déclarés. Ceci n'est pas encore voté ni entièrement débattu.
 
-```
-<class_dec> ::= kat T_IDENTIFIER \{ <class_c> \}
+```html
+<class_dec> ::= kat T_IDENTIFIER <scope>
 ```
 
 ## Variables
@@ -133,12 +135,48 @@ De même pour `<nom>`, il est possible de lancer le débat à propos des tuples 
 
 Pour le moment, value reste simple, mais c'est amené à changer.
 
-```
+```html
 <type> ::= T_TYPE_DEF
 <name> ::= T_IDENTIFIER
-<value> ::= <opc>
+<value> ::= <exp>
 <var_dec> ::= <type> " " <name> " " <value>
 <var_mod> ::= <name> " " <value>
+...
 ```
 
-## ...
+## Lignes de code et expressions
+
+Je considère ici que la dernière ligne d'un bloc de code peut être une valeur de retour. Ce n'est pas forcément le cas, et ces erreurs sont gérées au moment de vérifications plus complexes.
+
+<div class="warning">Je prend dans cette partie des libertés sur ce qui a été voté</div>
+
+```html
+<sta_l> ::= "{" {<sta>} "}"
+<exp> ::= <opc> | <scope> | <var_dec> | <var_mod>
+<return> ::= ei <exp>
+<sta> ::= <exp> | return
+<k_name> ::= T_IDENTIFIER | (* - "{")
+<k_start> ::= <sta_l> | <k_name> <sta_l>
+<kodi> ::= kodi <k_start>
+<biuli> ::= biuli <k_start>
+<spoki> ::= spoki <k_start>
+<scope> ::= <sta_l> | <kodi> | <spoki> | <biuli> | <sta>
+```
+
+L'élément `sta` sera complété plus tard.
+
+## Conditions
+
+```html
+<sula> ::= sula (<ij> (<sula> |) | <scope>)
+<ij> ::= ij (" " <value> | "(" <scope> ")") <scope>
+<cond> ::= <ij> (<sula> |)
+```
+
+## Fonctions
+
+Le non-terminal `tuple` est en attente de débat.
+
+```html
+<fct_dec> ::= ums T_IDENTIFIER <tuple> <scope>
+```
