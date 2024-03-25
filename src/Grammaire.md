@@ -162,12 +162,25 @@ $$
 \end{align}
 $$
 
-## Opérations
+## Identifiants et valeurs
 
 Le nom terminal `value` devra être complété avec le temps.
 
+Le token `T_TYPE_DEF` représente tout type défini par un nom au moment du parsing.
+
 ```html
-<value> ::= T_BOOL | T_INT | T_STRING | T_FLOAT | (T_PLUS | T_MINUS) (<value>) | T_IDENTIFIER (<tuple> |)
+<cget> ::= T_TYPE_DEF
+<op_in> ::= (T_IN (<id_get> | <cget>) |)
+<id_get> ::= T_IDENTIFIER (<tuple> |) <op_in>
+<id_set> ::= T_IDENTIFIER <op_in>
+```
+
+Remarquez que `op_in` est destiné à un usage local uniquement.
+
+## Opérations
+
+```html
+<value> ::= T_BOOL | T_INT | T_STRING | T_FLOAT | (T_PLUS | T_MINUS) (<value>) | <id_get>
 <opc> ::= <tp2>
 <take_prio> ::= "(" <opc> ")" | <value>
 <tp> ::= <take_prio>
@@ -191,8 +204,6 @@ Le nom terminal `value` devra être complété avec le temps.
 
 ## Variables
 
-Le token `T_TYPE_DEF` représente tout type défini par un nom au moment du parsing.
-
 D'autres éléments peuvent être ajoutés à `<type>`, comme un équivalent à `auto` / `let` / … pour détecter le type automatiquement, ou des types sous forme d'ensembles.
 
 De même pour `<nom>`, il est possible de lancer le débat à propos des tuples (ou des déclarations avec ensembles ?).
@@ -201,10 +212,8 @@ Pour le moment, value reste simple, mais c'est amené à changer.
 
 ```html
 <type> ::= T_TYPE_DEF
-<name> ::= T_IDENTIFIER
-<value> ::= <exp>
-<vd> ::= <type> " " <name> " " <value>
-<var_mod> ::= <name> (" " | T_IN ...) <value>
+<vd> ::= <type> " " T_IDENTIFIER " " <exp>
+<var_mod> ::= " " <exp>
 <global_var> ::= fu <vd>
 <private_var> ::= pu <vd>
 <const_var> ::= ju (<vd> | <private_var> | <global_var>)
@@ -219,6 +228,7 @@ Je considère ici que la dernière ligne d'un bloc de code peut être une valeur
 
 ```html
 <sta_l> ::= "{" {<sta>} "}"
+<id_use> ::= <id_set> (<var_mod> | ...) | ...
 <exp> ::= <opc> | <scope> | <var_dec> | <var_mod>
 <return> ::= ei <exp>
 <sta> ::= <exp> | return
