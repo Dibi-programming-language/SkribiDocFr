@@ -20,3 +20,6 @@ limit-results = 15
 
 [output.html.code.hidelines]
 skribi = "#"
+
+[preprocessor.katex]
+after = ["links"]
