@@ -175,23 +175,26 @@ Le token `T_TYPE_DEF` représente tout type défini par un nom au moment du pars
 <id_set> ::= T_IDENTIFIER <op_in>
 ```
 
-Remarquez que `op_in` est destiné à un usage local uniquement.
+Remarquez que `op_in` est destiné à un usage local uniquement, et que `id_set` est une variante de `id_get`.
 
 ## Opérations
 
 ```html
-<value> ::= T_BOOL | T_INT | T_STRING | T_FLOAT | (T_PLUS | T_MINUS) (<value>) | <id_get>
-<opc> ::= <tp2>
-<take_prio> ::= "(" <opc> ")" | <value>
+<value> ::=
+  T_BOOL | T_INT | T_STRING | T_FLOAT
+  | (T_PLUS | T_MINUS) <value>
+  | <exp>
+<take_prio> ::= "(" <tp2> ")" | <value>
 <tp> ::= <take_prio>
 <mult> ::= T_MULT <tp1>
 <div> ::= T_DIV <tp1>
 <md> ::= <mult> | <div>
-<tp1> ::= <tp> | <tp> <md>
+<tp1> ::= <tp> (<md> |)
 <add> ::= T_ADD <tp2>
 <sub> ::= T_SUB <tp2>
 <as> ::= <add> | <sub>
-<tp2> ::= <tp1> | <tp1> <as>
+<tp2> ::= <tp1> (<as> |)
+<no_value> ::= (<md> |) (<as> |)
 ```
 
 ## Classes
@@ -213,11 +216,12 @@ Pour le moment, value reste simple, mais c'est amené à changer.
 ```html
 <type> ::= T_TYPE_DEF
 <vd> ::= <type> " " T_IDENTIFIER " " <exp>
-<var_mod> ::= " " <exp>
 <global_var> ::= fu <vd>
 <private_var> ::= pu <vd>
-<const_var> ::= ju (<vd> | <private_var> | <global_var>)
+<const_var> ::= ju (<private_var> | <global_var> | <vd>)
 <var_dec> ::= <const_var> | <private_var> | <global_var> | <vd>
+
+<var_mod> ::= " " <exp>
 ```
 
 ## Lignes de code et expressions
@@ -228,11 +232,16 @@ Je considère ici que la dernière ligne d'un bloc de code peut être une valeur
 
 ```html
 <sta_l> ::= "{" {<sta>} "}"
-<id_use> ::= <id_set> (<var_mod> | ...) | ...
-<exp> ::= <opc> | <scope> | <var_dec> | <var_mod>
+<id_use> ::= <id_set> (<var_mod> | <no_value> |) | <id_get> (<no_value> |)
+<exp_tp2> ::= ...
+<exp_tp> ::= <exp_tp2> | <scope>
+<exp> ::= <scope> | <id_use> | <var_dec> | <tp2>
 <return> ::= ei <exp>
-<sta> ::= <exp> | return
-<k_name> ::= T_IDENTIFIER | (* - "{")
+<sta> ::= <exp> | <return>
+```
+
+```html
+<k_name> ::= T_IDENTIFIER | {(* - "{")}
 <k_start> ::= <sta_l> | <k_name> <sta_l>
 <kodi> ::= kodi <k_start>
 <biuli> ::= biuli <k_start>
@@ -258,6 +267,8 @@ Le non-terminal `tuple` est en attente de débat.
 <fct_dec> ::= ums T_IDENTIFIER <tuple> <scope>
 ```
 # Fichier
+
+La racine de l'AST !
 
 ```html
 <fichier> ::= {<exp>}
