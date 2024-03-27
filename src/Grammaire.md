@@ -180,12 +180,16 @@ Remarquez que `op_in` est destiné à un usage local uniquement, et que `id_set`
 ## Opérations
 
 ```html
+<value_base> ::= T_BOOL | T_INT | T_STRING | T_FLOAT
 <value> ::=
-  T_BOOL | T_INT | T_STRING | T_FLOAT
-  | (T_PLUS | T_MINUS) <value>
-  | <exp>
-<take_prio> ::= "(" <tp2> ")" | <value>
-<tp> ::= <take_prio>
+  | <value_base>
+  | <exp_base>
+<take_prio> ::=
+  T_LEFT_P <exp> T_RIGHT_P
+  | <value>
+<tp> ::=
+  (T_PLUS | T_MINUS) <tp>
+  | <take_prio>
 <mult> ::= T_MULT <tp1>
 <div> ::= T_DIV <tp1>
 <md> ::= <mult> | <div>
@@ -215,14 +219,16 @@ Pour le moment, value reste simple, mais c'est amené à changer.
 
 ```html
 <type> ::= T_TYPE_DEF
-<vd> ::= <type> " " T_IDENTIFIER " " <exp>
+<vd> ::= <type> T_IDENTIFIER <exp>
 <global_var> ::= fu <vd>
 <private_var> ::= pu <vd>
 <const_var> ::= ju (<private_var> | <global_var> | <vd>)
 <var_dec> ::= <const_var> | <private_var> | <global_var> | <vd>
 
-<var_mod> ::= " " <exp>
+<var_mod> ::= <exp>
 ```
+
+Le non-terminal `var_mod` est utilisé dans un contexte particulier, il est précédé d'un `id_set`. Il existe un risque de bug à ce niveau, mais il est faible.
 
 ## Lignes de code et expressions
 
@@ -231,22 +237,42 @@ Je considère ici que la dernière ligne d'un bloc de code peut être une valeur
 <div class="warning">Je prend dans cette partie des libertés sur ce qui a été voté</div>
 
 ```html
-<sta_l> ::= "{" {<sta>} "}"
-<id_use> ::= <id_set> (<var_mod> | <no_value> |) | <id_get> (<no_value> |)
-<exp_tp2> ::= ...
-<exp_tp> ::= <exp_tp2> | <scope>
-<exp> ::= <scope> | <id_use> | <var_dec> | <tp2>
+<id_use> ::=
+  <id_set> (<var_mod> |)
+  | <id_get>
+<id_use_v> ::= <id_use> (<no_value> |)
+<exp_base> ::=
+  <id_use>
+  | <var_dec>
+  | <cond>
+  | <scope_base>
+  | <fct_dec>
+  | T_LEFT_P <exp> T_RIGHT_P
+<exp_tp> ::=
+  <exp_base>
+  | <id_use_v>
+<exp> ::=
+  | <exp_tp>
+  <tp2>
 <return> ::= ei <exp>
-<sta> ::= <exp> | <return>
+<sta> ::= <return> | <exp>
+<sta_l> ::= T_LEFT_E {<sta>} T_RIGHT_E
 ```
 
 ```html
-<k_name> ::= T_IDENTIFIER | {(* - "{")}
+<k_name> ::=
+  T_IDENTIFIER
+  | {(* - T_LEFT_E)}
 <k_start> ::= <sta_l> | <k_name> <sta_l>
 <kodi> ::= kodi <k_start>
 <biuli> ::= biuli <k_start>
 <spoki> ::= spoki <k_start>
-<scope> ::= <sta_l> | <kodi> | <spoki> | <biuli> | <sta>
+<scope_base> ::=
+  <sta_l>
+  | <kodi>
+  | <spoki>
+  | <biuli>
+<scope> ::= <scope_base> | <sta>
 ```
 
 L'élément `sta` sera complété plus tard.
@@ -255,7 +281,7 @@ L'élément `sta` sera complété plus tard.
 
 ```html
 <sula> ::= sula (<ij> (<sula> |) | <scope>)
-<ij> ::= ij (" " <value> | "(" <scope> ")") <scope>
+<ij> ::= ij <exp> <scope>
 <cond> ::= <ij> (<sula> |)
 ```
 
