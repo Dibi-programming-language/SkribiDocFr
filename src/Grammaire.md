@@ -9,7 +9,9 @@ Ici, en plus des symboles classiques de grammaire, les `{}` seront utilisés pou
 
 Le terminal `\` sera toujours représenté par `\\` pour enlever les confusions. De même pour tout terminal pouvant être confondu avec un symbole de grammaire.
 
-Quand ils ne sont pas indiqués, les espaces, tabulations et retours à la ligne sont ignorés. Dans le cas contraire, le terminal d'espace est indiqué par `" "` et peut être remplacé sans contrainte par une tabulation ou un retour à ligne.
+Quand ils ne sont pas indiqués, les espaces, tabulations et retours à la ligne sont ignorés[^1]. Dans le cas contraire, le terminal d'espace est indiqué par `T_SPACE` et peut être remplacé sans contrainte par une tabulation ou un retour à ligne. La situation a pour le moment été évitée.
+
+[^1]: Pour préciser, ils sont utilisés pour séparer les tokens, mais ignorés lors de la création de l'arbre : ils ne sont pas considérés comme des tokens.
 
 ## Motivations
 
