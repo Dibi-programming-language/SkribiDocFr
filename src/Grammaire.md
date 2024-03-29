@@ -77,6 +77,8 @@ Ici `R_VALUE` indique un token qui est soit :
 Les `TODO` désignent des éléments non votés.
 
 ```html
+T_NAT_CALL ::= skr_app
+
 T_ADD ::= ~R_VALUE +
 T_SUB ::= ~R_VALUE "-"
 T_DIV ::= ~R_VALUE /
@@ -279,6 +281,8 @@ Je considère ici que la dernière ligne d'un bloc de code peut être une valeur
 <div class="warning">Je prend dans cette partie des libertés sur ce qui a été voté</div>
 
 ```html
+<nat_call_in> ::= " " T_IDENTIFIER ("\n" | <nat_call_in>)
+<nat_call> ::= T_NAT_CALL <nat_call_in>
 <id_use> ::=
   <id_set> (<var_mod> |)
   | <id_get>
