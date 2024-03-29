@@ -74,11 +74,22 @@ Ici `R_VALUE` indique un token qui est soit :
 - Un token de fin de parenthèses
 - Un token de fin d'ensemble.
 
+Les `TODO` désignent des éléments non votés.
+
 ```html
 T_ADD ::= ~R_VALUE +
 T_SUB ::= ~R_VALUE "-"
 T_DIV ::= ~R_VALUE /
 T_MULT ::= ~R_VALUE "*"
+T_POW ::= TODO ?
+
+T_AND ::= TODO
+T_OR ::= TODO
+T_XOR ::= TODO ? Can be not equal
+T_NOT ::= TODO
+
+T_EQUAL ::= TODO
+T_NOT_EQUAL ::= TODO
 
 T_PLUS ::= +
 T_MINUS ::= "-"
@@ -179,7 +190,27 @@ Le token `T_TYPE_DEF` représente tout type défini par un nom au moment du pars
 
 Remarquez que `op_in` est destiné à un usage local uniquement, et que `id_set` est une variante de `id_get`.
 
+$$
+\begin{align}
+[\text{cget}] &\to \text{T\_TYPE\_DEF} \\
+[\text{op\_in}] &\to \begin{cases}
+\text{T\_IN} \begin{cases}
+[\text{id\_get}] \\
+[\text{cget}]
+\end{cases} \\
+\epsilon
+\end{cases} \\
+[\text{id\_get}] &\to \text{T\_IDENTIFIER} \begin{cases}
+[\text{tuple}] \\
+\epsilon
+\end{cases} [\text{op\_in}] \\
+[\text{id\_set}] &\to \text{T\_IDENTIFIER } [\text{op\_in}]
+\end{align}
+$$
+
 ## Opérations
+
+Il est pour le moment considéré que les égalités peuvent être enchainées.
 
 ```html
 <value_base> ::= T_BOOL | T_INT | T_STRING | T_FLOAT
@@ -190,7 +221,7 @@ Remarquez que `op_in` est destiné à un usage local uniquement, et que `id_set`
   T_LEFT_P <exp> T_RIGHT_P
   | <value>
 <tp> ::=
-  (T_PLUS | T_MINUS) <tp>
+  (T_PLUS | T_MINUS | T_NOT) <tp>
   | <take_prio>
 <mult> ::= T_MULT <tp1>
 <div> ::= T_DIV <tp1>
@@ -200,7 +231,16 @@ Remarquez que `op_in` est destiné à un usage local uniquement, et que `id_set`
 <sub> ::= T_SUB <tp2>
 <as> ::= <add> | <sub>
 <tp2> ::= <tp1> (<as> |)
-<no_value> ::= (<md> |) (<as> |)
+<eq> ::= T_EQUAL <tp3>
+<not_eq> ::= T_NOT_EQUAL <tp3>
+<eq_not> ::= <eq> | <not_eq>
+<tp3> ::= <tp2> (<eq_not> |)
+<and> ::= T_AND <tp4>
+<tp4> ::= <tp3> (<and> |)
+<or> ::= T_OR <tp5>
+<tp5> ::= <tp4> (<or> |)
+<tp_last> ::= <tp5>
+<no_value> ::= (<md> |) (<as> |) (<eq_not> |) (<and> |) (<or> |)
 ```
 
 ## Classes
@@ -255,7 +295,7 @@ Je considère ici que la dernière ligne d'un bloc de code peut être une valeur
   | <id_use_v>
 <exp> ::=
   | <exp_tp>
-  <tp2>
+  <tp_last>
 <return> ::= ei <exp>
 <sta> ::= <return> | <exp>
 <sta_l> ::= T_LEFT_E {<sta>} T_RIGHT_E
