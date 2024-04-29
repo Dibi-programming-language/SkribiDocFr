@@ -185,7 +185,7 @@ Le token `T_TYPE_DEF` représente tout type défini par un nom au moment du pars
 
 ```html
 <cget> ::= T_TYPE_DEF
-<op_in> ::= (T_IN (<id_get> | <cget>) |)
+<op_in> ::= (T_IN (<cget> | <id_get>) |)
 <id_get> ::= T_IDENTIFIER (<tuple> |) <op_in>
 <id_set> ::= T_IDENTIFIER <op_in>
 ```
@@ -281,7 +281,7 @@ Je considère ici que la dernière ligne d'un bloc de code peut être une valeur
 <div class="warning">Je prend dans cette partie des libertés sur ce qui a été voté</div>
 
 ```html
-<nat_call_in> ::= " " T_IDENTIFIER ("\n" | <nat_call_in>)
+<nat_call_in> ::= T_IDENTIFIER ("\n" | <nat_call_in>)
 <nat_call> ::= T_NAT_CALL <nat_call_in>
 <id_use> ::=
   <id_set> (<var_mod> |)
@@ -338,7 +338,7 @@ Le non-terminal `tuple` est en attente de débat.
 ```html
 <fct_dec> ::= ums T_IDENTIFIER <tuple> <scope>
 ```
-# Fichier
+## Fichier
 
 La racine de l'AST !
 
