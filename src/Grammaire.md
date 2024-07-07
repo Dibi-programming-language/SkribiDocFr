@@ -217,7 +217,7 @@ Il est pour le moment considéré que les égalités peuvent être enchainées.
 ```html
 <value_base> ::= T_BOOL | T_INT | T_STRING | T_FLOAT
 <value> ::=
-  | <value_base>
+  <value_base>
   | <exp_base>
 <take_prio> ::=
   T_LEFT_P <exp> T_RIGHT_P
@@ -242,7 +242,12 @@ Il est pour le moment considéré que les égalités peuvent être enchainées.
 <or> ::= T_OR <tp5>
 <tp5> ::= <tp4> (<or> |)
 <tp_last> ::= <tp5>
-<no_value> ::= (<md> |) (<as> |) (<eq_not> |) (<and> |) (<or> |)
+
+<nv0> ::= <and> (<or> |) | <or>
+<nv1> ::= <eq_not> (<nv0> |) | <nv0>
+<nv2> ::= <as> (<nv1> |) | <nv1>
+<nv3> ::= <md> (<nv2> |) | <nv2>
+<no_value> ::= <nv3>
 ```
 
 ## Classes
@@ -298,8 +303,8 @@ Je considère ici que la dernière ligne d'un bloc de code peut être une valeur
   <exp_base>
   | <id_use_v>
 <exp> ::=
-  | <exp_tp>
-  <tp_last>
+  <exp_tp>
+  | <tp_last>
 <return> ::= ei <exp>
 <sta> ::= <return> | <exp>
 <sta_l> ::= T_LEFT_E {<sta>} T_RIGHT_E
