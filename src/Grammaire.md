@@ -291,7 +291,9 @@ Je considère ici que la dernière ligne d'un bloc de code peut être une valeur
 <id_use> ::=
   <id_set> (<var_mod> |)
   | <id_get>
-<id_use_v> ::= <id_use> (<no_value> |)
+<id_use_v> ::=
+  <id_set> (<no_value> |) (<var_mod> |)
+  | <id_get>
 <exp_base> ::=
   <id_use>
   | <var_dec>
