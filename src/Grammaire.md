@@ -187,7 +187,6 @@ Le token `T_TYPE_DEF` représente tout type défini par un nom au moment du pars
 <cget> ::= T_TYPE_DEF
 <op_in> ::= (T_IN (<cget> | <id_get>) |)
 <id_get> ::= T_IDENTIFIER (<tuple> |) <op_in>
-<id_set> ::= T_IDENTIFIER <op_in>
 ```
 
 Remarquez que `op_in` est destiné à un usage local uniquement, et que `id_set` est une variante de `id_get`.
