@@ -288,12 +288,15 @@ Je considère ici que la dernière ligne d'un bloc de code peut être une valeur
 ```html
 <nat_call_in> ::= T_IDENTIFIER ("\n" | <nat_call_in>)
 <nat_call> ::= T_NAT_CALL <nat_call_in>
-<id_use> ::=
-  <id_set> (<var_mod> |)
-  | <id_get>
-<id_use_v> ::=
-  <id_set> (<no_value> |) (<var_mod> |)
-  | <id_get>
+<id_use> ::= T_IDENTIFIER (
+    <tuple> <op_in>
+    | <op_in> <var_mod>
+    | <op_in>
+  )
+<id_use_v> ::= T_IDENTIFIER (
+    <tuple> <op_in>
+    | <op_in> (<no_value> | <var_mod> |)
+  )
 <exp_base> ::=
   <id_use>
   | <var_dec>
