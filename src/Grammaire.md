@@ -293,7 +293,7 @@ Je considère ici que la dernière ligne d'un bloc de code peut être une valeur
     | <op_in>
   )
 <id_use_v> ::= T_IDENTIFIER (
-    <tuple> <op_in>
+    <tuple> <op_in> (<no_value> |)
     | <op_in> (<no_value> | <var_mod> |)
   )
 <exp_base> ::=
